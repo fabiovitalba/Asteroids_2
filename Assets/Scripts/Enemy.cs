@@ -33,7 +33,7 @@ public class Enemy : MonoBehaviour {
 		}
 	}
 	
-	void SetPositionAndSpeed ()	{
+	public void SetPositionAndSpeed ()	{
 		currentSpeed = Random.Range(MinSpeed, MaxSpeed);	//Zufallszahl zwischen MinSpeed und MaxSpeed
 		currentAngle = Random.Range(0f, 360f);
 		x = Random.Range(-6f, 6f);

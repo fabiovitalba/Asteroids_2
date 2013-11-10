@@ -6,6 +6,9 @@ public class Player : MonoBehaviour {	//Player erbt von MonoBehaviour
 	public float PlayerSpeed;	//Public Variables are visible & changeable in the Unity3D UI
 	public GameObject ProjectilePrefab;
 	public GameObject RocketPrefab;
+	public GameObject ExplosionPrefab;
+	static public int Score = 0;
+	static public int Lives = 3;
 	
 	//vopelj@googlemail.com Tutormail
 	
@@ -61,6 +64,21 @@ public class Player : MonoBehaviour {	//Player erbt von MonoBehaviour
 			
 			Instantiate(RocketPrefab, position, Quaternion.identity);	//Ein Projektil wird instanziiert.
 		}
-		
+	}
+	
+	void OnGUI()	{
+		GUI.Label(new Rect(10, 10, 120, 20), "Score: " + Player.Score.ToString());
+		GUI.Label(new Rect(10, 30, 120, 20), "Lives: " + Player.Lives.ToString());
+	}
+	
+	void OnTriggerEnter(Collider otherObject)	{
+		if (otherObject.tag == "enemy")	{
+			Player.Lives--;
+			
+			Enemy enemy = (Enemy)otherObject.gameObject.GetComponent("Enemy");
+			enemy.SetPositionAndSpeed();
+			
+			Instantiate(ExplosionPrefab, transform.position, Quaternion.identity);
+		}
 	}
 }
