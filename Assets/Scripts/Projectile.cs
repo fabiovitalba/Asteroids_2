@@ -13,6 +13,7 @@ public class Projectile : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		float amtToMove = ProjectileSpeed * Time.deltaTime;
+		
 		transform.Translate(Vector3.up * amtToMove);
 		
 		//Wenn eine gewisse Höhe erreicht wird, Objekt löschen um unnötige Projektile nichtmehr zu berrechnen.
@@ -29,6 +30,7 @@ public class Projectile : MonoBehaviour {
 			enemy.SetPositionAndSpeed();
 			Destroy(gameObject);
 			Player.Score += 100;
+			Player.WeaponScore += 100;
 		}
 	}
 }
