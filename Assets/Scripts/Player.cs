@@ -8,9 +8,11 @@ public class Player : MonoBehaviour {	//Player erbt von MonoBehaviour
 	public GameObject ProjectilePrefab2;
 	public GameObject BombPrefab;
 	public GameObject ExplosionPrefab;
-	static public int Score = 0;
-	static public int Lives = 3;
-	static public int WeaponScore = 0;
+	
+	public static int Score = 0;
+	public static int Lives = 3;
+	public static int WeaponScore = 0;
+	public static int Missed = 0;
 	
 	//vopelj@googlemail.com Tutormail
 	
@@ -86,21 +88,34 @@ public class Player : MonoBehaviour {	//Player erbt von MonoBehaviour
 	void OnGUI()	{
 		GUI.Label(new Rect(10, 10, 120, 20), "Score: " + Player.Score.ToString());
 		GUI.Label(new Rect(10, 30, 120, 20), "Lives: " + Player.Lives.ToString());
-		GUI.Label(new Rect(10, 50, 120, 20), "Weapon Score: " + Player.WeaponScore.ToString());
+		GUI.Label(new Rect(10, 50, 120, 20), "Missed: " + Player.Missed.ToString());
+		GUI.Label(new Rect(10, 70, 120, 20), "Weapon Score: " + Player.WeaponScore.ToString());
 	}
 	
 	void OnTriggerEnter(Collider otherObject)	{
 		if (otherObject.tag == "enemy")	{
-			Player.Lives--;
-			Player.WeaponScore = 0;
+			Lives--;
+			WeaponScore = 0;
 			
 			Enemy enemy = (Enemy)otherObject.gameObject.GetComponent("Enemy");
 			enemy.SetPositionAndSpeed();
 			
-			Instantiate(ExplosionPrefab, transform.position, Quaternion.identity);
+			//Instantiate(ExplosionPrefab, transform.position, Quaternion.identity);
+			StartCoroutine(DestroyShip());
 			
-			//Reset Position
-			transform.position = new Vector3(0f, 0f, 0f);
+		}
+	}
+	
+	IEnumerator DestroyShip()	{
+		Instantiate(ExplosionPrefab, transform.position, Quaternion.identity);
+		gameObject.renderer.enabled = false;
+		transform.position = new Vector3(0f, transform.position.y, transform.position.z);
+		yield return new WaitForSeconds(1.5f);
+		
+		if (Player.Lives > 0)	{
+			gameObject.renderer.enabled = true;
+		}	else {
+			Application.LoadLevel("Lose");
 		}
 	}
 }

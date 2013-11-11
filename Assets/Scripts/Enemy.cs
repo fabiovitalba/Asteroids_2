@@ -23,14 +23,20 @@ public class Enemy : MonoBehaviour {
 		
 		if (transform.position.x < -8f)	{
 			SetPositionAndSpeed();
+			Player.Missed ++;
 		}	else if (transform.position.x > 8f)	{
 			SetPositionAndSpeed();
+			Player.Missed ++;
 		}	
 		if (transform.position.y < -5f)	{
 			SetPositionAndSpeed();
+			Player.Missed ++;
 		}	else if (transform.position.y > 7f)	{
 			SetPositionAndSpeed();
+			Player.Missed ++;
 		}
+		//If the Enemy falls out of the Field, player gets +1 to Missed
+		
 	}
 	
 	public void SetPositionAndSpeed ()	{

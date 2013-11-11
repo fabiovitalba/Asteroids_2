@@ -1,0 +1,20 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Stars.cs">
+    <Files>
+      <File FileName="Assets\Scripts\Player.cs" Line="118" Column="4" />
+      <File FileName="Assets\Scripts\KillParticleSystem.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Enemy.cs" Line="41" Column="2" />
+      <File FileName="Assets\Scripts\Bomb.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Projectile.cs" Line="31" Column="33" />
+      <File FileName="Assets\Scripts\MainMenu.cs" Line="23" Column="4" />
+      <File FileName="Assets\Scripts\Lose.cs" Line="6" Column="4" />
+      <File FileName="Assets\Scripts\Win.cs" Line="25" Column="26" />
+      <File FileName="Assets\Scripts\Stars.cs" Line="21" Column="61" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
