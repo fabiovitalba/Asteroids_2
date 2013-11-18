@@ -5,9 +5,11 @@ public class Projectile : MonoBehaviour {
 	public float ProjectileSpeed;
 	public GameObject ExplosionPrefab;
 	
+	private Enemy enemy;
+	
 	// Use this for initialization
 	void Start () {
-	
+		enemy = (Enemy)GameObject.Find("Enemy").GetComponent("Enemy");
 	}
 	
 	// Update is called once per frame
@@ -31,8 +33,13 @@ public class Projectile : MonoBehaviour {
 				Application.LoadLevel("Win");
 			}
 			
-			Enemy enemy = (Enemy)otherObject.gameObject.GetComponent("Enemy");
+			//Enemy enemy = (Enemy)otherObject.gameObject.GetComponent("Enemy");
 			Instantiate(ExplosionPrefab, new Vector3(enemy.transform.position.x, enemy.transform.position.y, enemy.transform.position.z), enemy.transform.rotation);
+			
+			//Game gets more difficult -> Increasing Speed
+			enemy.MinSpeed += 0.5f;
+			enemy.MaxSpeed += 1f;
+			
 			enemy.SetPositionAndSpeed();
 			Destroy(gameObject);
 		}
