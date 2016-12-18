@@ -140,8 +140,8 @@ public class Player : MonoBehaviour {	//Player erbt von MonoBehaviour
 			state = State.Invincible;
 			while (blinkCount < numberOfTimesToBlink)	{
 				//If true, make false -> If false, make true. Rinse and Repeat. ???. Profit!
-				gameObject.renderer.enabled = !gameObject.renderer.enabled;
-				if (gameObject.renderer.enabled)	{
+				gameObject.GetComponent<Renderer>().enabled = !gameObject.GetComponent<Renderer>().enabled;
+				if (gameObject.GetComponent<Renderer>().enabled)	{
 					blinkCount++;
 				}
 				yield return new WaitForSeconds(blinkRate);

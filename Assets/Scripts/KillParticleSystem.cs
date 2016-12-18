@@ -10,7 +10,7 @@ public class KillParticleSystem : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (!particleSystem.IsAlive())	{
+		if (!GetComponent<ParticleSystem>().IsAlive())	{
 			Destroy (this.gameObject);
 		}
 	}
